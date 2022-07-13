@@ -1,0 +1,39 @@
+
+@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Admin";
+}
+
+<div id="app">
+
+    <div>
+        <h2>افزودن محصول جدید</h2>
+        <br>
+        <input class="form-control" v-model="productModel.title"><br>
+        <textarea class="form-control" v-model="productModel.description"></textarea><br>
+        <input class="form-control" v-model="productModel.price">
+        <br>
+        <button class="btn btn-success" @@click="createProduct" v-if="!product.id">افزودن محصول</button>
+        @* <button class="btn btn-success" @@click="updateProduct" v-else>به روز رسانی محصول</button> *@
+
+    </div>
+
+    <hr>
+
+    <button class="btn btn-primary" v-on:click="getProducts">نمایش لیست محصولات</button> <br><br>
+
+    <p v-for="p in products">{{p.id}}- <a href="">{{p.title}}</a> {{p.price}} هزار تومان
+        <a @@click="editProduct">به روز رسانی</a>
+        <a @@click="deleteProduct">حذف</a>
+    </p>
+
+</div>
+
+
+@section scripts
+{
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="~/js/admin/main.js"></script>
+}

@@ -1,0 +1,24 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "صفحه اصلی";
+}
+<div class="row">
+    <h2>جدیدترین محصولات دایناسور</h2> <br><br><br>
+    @* <div class="col-sm"> *@
+    @{
+        foreach (var p in Model.Products)
+        {
+            <div class="card" style="width: 18rem;">
+                @* <img class="card-img-top" src="..." alt="Card image cap"> *@
+                <div class="card-body">
+                    <h5 class="card-title">@p.Title</h5>
+                    <p class="card-text">@p.Description</p>
+                    <p class="card-text">@p.Price هزار تومان</p>
+                    <a href="#" class="btn btn-primary">Details</a>
+                </div>
+            </div>
+        }
+    }
+    @* </div> *@
+</div>
